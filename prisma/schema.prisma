@@ -28,7 +28,7 @@ model User{
 
 model Account{
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  userId String @db.objectId
+  userId String @db.ObjectId
   type String
   provider String
   providerAccountId String
@@ -40,5 +40,38 @@ model Account{
   id_token String? @db.String
   session_state String?
 
-  user User @relation(fields: [userId], references: [id], onDelete : cascade)
+  user User @relation(fields: [userId], references: [id], onDelete : Cascade)
+  @@unique([provider, providerAccountId])
+}
+
+model Listing{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  description String
+  imageSrc String
+  createdAt DateTime @default(now())
+  category String
+  roomCount Int
+  bathroomCount Int
+  guestCount Int
+  locationValue String
+  userId String @db.ObjectId
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  reservations Reservation[]
+}
+
+model Reservation{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  listingId String @db.ObjectId
+  startDate DateTime
+  endDate DateTime
+  totalPrice Int
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
 }

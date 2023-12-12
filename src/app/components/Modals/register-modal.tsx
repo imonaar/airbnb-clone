@@ -17,6 +17,7 @@ import Button from '../button';
 export default function RegisterModal() {
     const registerModal = useRegisterModal();
     const [isLoading, setIsLoading] = useState(false);
+    
     const { register, handleSubmit, formState: {
         errors
     } } = useForm<FieldValues>({
