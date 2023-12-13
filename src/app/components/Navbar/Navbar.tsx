@@ -5,6 +5,8 @@ import Logo from "./logo"
 import Search from "./search"
 import Usermenu from "./usermenu"
 import { SafeUser } from "@/app/types"
+import Categories from "./categories"
+
 
 export interface CurrentUserProps {
     currentUser?: SafeUser | null
@@ -21,10 +23,11 @@ export default function Navbar({ currentUser }: CurrentUserProps) {
                     <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
                         <Logo />
                         <Search />
-                        <Usermenu currentUser = {currentUser} />
+                        <Usermenu currentUser={currentUser} />
                     </div>
                 </Container>
             </div>
+            <Categories />
         </div>
     )
 }
