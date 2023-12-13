@@ -56,7 +56,8 @@ export default function Modal({
         secondaryAction()
     }, [disabled, secondaryAction])
 
-    if (!isOpen) return null;
+    if (!isOpen) return null; //This is the most crucial line in out modal. If isOpen is false we dont proceed,
+    //we render null and thus nothing appears on the screen
 
     return (
         <>
@@ -133,13 +134,13 @@ export default function Modal({
                                     {title}
                                 </div>
                             </div>
+                            
                             {/* BODY */}
-
                             <div className='relative p-6 flex-auto'>
                                 {body}
                             </div>
-                            {/* footer */}
 
+                            {/* footer */}
                             <div className='flex flex-col gap-2 p-6'>
                                 <div className='
                                     flex
@@ -160,6 +161,7 @@ export default function Modal({
                                         onClick={handleSubmit}
                                     />
                                 </div>
+                                
                                 {footer}
                             </div>
                         </div>
