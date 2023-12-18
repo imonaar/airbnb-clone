@@ -59,6 +59,7 @@ export default function RentModal() {
     const guestCount = watch('guestCount')
     const roomCount = watch('roomCount')
     const bathroomCount = watch('bathroomCount')
+    const imgSrc = watch('imageSrc')
 
     const Map = useMemo(() => dynamic(() => import('../map'), {
         ssr: false
@@ -139,6 +140,7 @@ export default function RentModal() {
             </div>
         )
     }
+
     if (step === STEPS.INFO) {
         bodyContent = (
             <div className='flex flex-col gap-8'>
@@ -172,13 +174,18 @@ export default function RentModal() {
     }
 
     if (step === STEPS.IMAGES) {
-        <div className='flex flex-col gap-8'>
-            <Heading
-                title='Add a photo of your place'
-                subtitle='Show Guests what your place looks like!'
-            />
-            <ImageUpload/>
-        </div>
+        bodyContent = (
+            <div className='flex flex-col gap-8'>
+                <Heading
+                    title='Add a photo of your place'
+                    subtitle='Show Guests what your place looks like!'
+                />
+                <ImageUpload
+                    value={imgSrc}
+                    onChange={value => setCustomValue('imageSrc', value)}
+                />
+            </div>
+        )
     }
 
     return (
