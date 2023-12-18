@@ -39,10 +39,13 @@ export default function Modal({
 
     const handleClose = useCallback(() => {
         if (disabled) return;
+
         setShowModel(false)
+
         setTimeout(() => {
             onClose();
         }, 300);
+       
     }, [disabled, onClose])
 
     const handleSubmit = useCallback(() => {
@@ -58,6 +61,7 @@ export default function Modal({
 
     if (!isOpen) return null; //This is the most crucial line in out modal. If isOpen is false we dont proceed,
     //we render null and thus nothing appears on the screen
+    //can we use show model here instead of isOpen -- ? yes
 
     return (
         <>

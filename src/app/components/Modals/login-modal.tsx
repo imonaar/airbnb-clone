@@ -21,8 +21,10 @@ import { useRouter } from 'next/navigation';
 
 export default function LoginModal() {
     const router = useRouter()
+
     const registerModal = useRegisterModal();
     const loginMOdal = useLoginModal(); //this is what determines when the login modal is rendered
+
     const [isLoading, setIsLoading] = useState(false);
 
     const { register, handleSubmit, formState: {
@@ -54,6 +56,12 @@ export default function LoginModal() {
         })
     }
 
+    const toggle = useCallback(() => {
+        loginMOdal.onClose();
+        registerModal.onOpen();
+
+    }, [loginMOdal, registerModal])
+
     const bodyContent = (
         <div className='flex flex-col gap-4 mt-3'>
             <Heading title='Welcome Back' subtitle='Log in to your Account' />
@@ -74,10 +82,10 @@ export default function LoginModal() {
             <div className='text-neutral-500 text-center mt-4 font-light' >
                 <div className='flex flex-row items-center gap-2 justify-center'>
                     <div>
-                        Already have an account?
+                        First time using Airbnb?
                     </div>
-                    <div className='text-neutral-800 cursor-pointer hover:underline' onClick={registerModal.onClose}>
-                        Login
+                    <div className='text-neutral-800 cursor-pointer hover:underline' onClick={toggle}>
+                        Create an account
                     </div>
                 </div>
             </div>
