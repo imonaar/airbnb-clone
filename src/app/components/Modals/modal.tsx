@@ -51,6 +51,9 @@ export default function Modal({
     const handleSubmit = useCallback(() => {
         if (disabled) return;
         onSubmit()
+        //this handles the submitting
+        //onSubmit in this case = handleSubmit(onSubmit) that is passed in from rent-modal, that is for rental modal
+        // but onSubmit = onNext for other components building on this modal;
     }, [disabled, onSubmit])
 
     const handleSecondaryAction = useCallback(() => {

@@ -1,5 +1,11 @@
+import ClientOnly from "./components/client-only";
+
 export default function Home() {
   return (
-    <h1 className="text-xl">Hello Airbnb</h1>
+    <ClientOnly>
+      <Container>
+      </Container>
+    </ClientOnly>
+
   )
 }

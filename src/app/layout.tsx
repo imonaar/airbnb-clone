@@ -8,9 +8,10 @@ import ToasterProvider from './providers/toast-provider'
 import LoginModal from './components/Modals/login-modal'
 import { getCurrentUser } from './actions/get-current-user'
 import RentModal from './components/Modals/rent-modal'
+import ClientOnly from './components/client-only'
 
 const font = Nunito({
-  subsets:['latin']
+  subsets: ['latin']
 })
 
 export const metadata: Metadata = {
@@ -22,18 +23,25 @@ export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
-  }) {
+}) {
   const currentUser = await getCurrentUser()
   return (
     <html lang="en">
       <body className={font.className}>
-        <ToasterProvider />
-        <RentModal />
-        <LoginModal/>
-        <RegisterModal/>
-        <Navbar currentUser={currentUser} />
-        
-        {children}</body>
+        <ClientOnly>
+          <ToasterProvider />
+          <RentModal />
+          <LoginModal />
+          <RegisterModal />
+          <Navbar currentUser={currentUser} />
+        </ClientOnly>
+
+        <div className='pb-20 pt-28'>
+          {children}
+        </div>
+
+
+      </body>
     </html>
   )
 }
