@@ -22,6 +22,7 @@ export default function CategoryBox({ label, description, icon: Icon, selected }
         if (params) {
             currentQuery = queryString.parse(params.toString());
         }
+        
         const updatedQuery: any = {
             ...currentQuery,
             category: label
