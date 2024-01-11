@@ -11,9 +11,12 @@ import { CurrentUserProps } from './Navbar'
 import useRegisterModal from '@/app/hooks/useRegisterModal'
 import useLoginModal from '@/app/hooks/useLoginModal'
 import useRentModal from '@/app/hooks/useRentModal'
+import { useRouter } from 'next/navigation'
+
 
 export default function Usermenu({ currentUser }: CurrentUserProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter()
 
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
@@ -91,7 +94,7 @@ export default function Usermenu({ currentUser }: CurrentUserProps) {
           <div className='flex flex-col cursor-pointer'>
             {currentUser ?
               <>
-                <MenuItem onClick={() => { }} label="My Trips" />
+                <MenuItem onClick={() => router.push('/trips') } label="My Trips" />
                 <MenuItem onClick={() => { }} label="My Favourites" />
                 <MenuItem onClick={() => { }} label="My reservations" />
                 <MenuItem onClick={() => { }} label="My properties" />

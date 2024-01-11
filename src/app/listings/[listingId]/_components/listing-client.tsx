@@ -68,8 +68,7 @@ export default function ListingClient({ listing, user, reservations = [] }: List
         }).then(() => {
             toast.success("reservation created");
             setDateRange(initialDateRange)
-            //redirect to /trips
-            router.refresh()
+            router.push(`/trips`)
         }).catch((e) => {
             throw new Error(e)
         }).finally(() => {
