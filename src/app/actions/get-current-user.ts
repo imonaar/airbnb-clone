@@ -36,7 +36,7 @@ export async function getCurrentUser() {
             ...currentUser,
             createdAt: currentUser.createdAt.toISOString(),
             updatedAt: currentUser.updatedAt.toISOString(),
-            emailVerified: currentUser.emailVerified?.toISOString(),
+            emailVerified: currentUser.emailVerified?.toISOString() || null,
         }
     } catch (error: any) {
         return null // do not throw any error because this is not an api call but a db communication
