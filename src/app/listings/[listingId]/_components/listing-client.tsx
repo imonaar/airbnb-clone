@@ -11,8 +11,7 @@ import { categories } from '@/app/components/Navbar/categories';
 import Container from '@/app/components/container';
 import ListingReservation from '@/app/components/listings/listing-reservation';
 import useLoginModal from '@/app/hooks/useLoginModal';
-import { SafeListing, SafeUser } from '@/app/types';
-import { Reservation } from '@prisma/client';
+import { SafeListing, SafeReservation, SafeUser } from '@/app/types';
 import ListingInfo from '../../../components/listings/listing-info';
 import { ListingHead } from './listing-head';
 
@@ -27,7 +26,7 @@ interface ListingClientProps {
         user: SafeUser;
     };
     user?: SafeUser | null;
-    reservations?: Reservation[];
+    reservations?: SafeReservation[];
 
 }
 
