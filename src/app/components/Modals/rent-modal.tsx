@@ -68,7 +68,7 @@ export default function RentModal() {
 
     const Map = useMemo(() => dynamic(() => import('../map'), {
         ssr: false
-    }), [location])
+    }), [])
     //watch the category value & use it to update the select state
 
     const setCustomValue = (id: string, value: any) => {
